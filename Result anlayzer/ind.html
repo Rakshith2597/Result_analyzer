@@ -18,10 +18,7 @@
       <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-
-
   </head>
-
 <body>
   <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -45,7 +42,6 @@
       </div>
     </div>
   </nav>
-
   <div class="login-card">
     <br>
     <br>
@@ -55,35 +51,18 @@
 
 
 
-
-  <form method="post" action="graph2.php">
-    <label for="college">Select College </label>
-
-    <input list="college" name="college">
-    <datalist id="college">
-
-    </datalist>
-    <br>
-
-    <label for="department">Select Department </label>
-
-    <input list="Department" name="department">
-    <datalist id="department">
-
-    </datalist>
+  <form method="post" action="graph1.php">
+    <label for="regnumber">Enter Reg number </label>
+    <input type="text" name="regno"  placeholder="Register No:">
     <input type="submit" name="graph" class="login login-submit" value="Graphical">
   </form>
-
-  
-  <form method="post" action="coll.php">
+  <form method="post" action="">
     <input type="submit" name="analyze" class="login login-submit" value="Analyze">
   </form>
 
 
 
   </div>
-
-
 
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

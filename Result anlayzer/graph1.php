@@ -1,5 +1,5 @@
 <?php
- $con = mysqli_connect('localhost','root','password','analyzer');
+ $con = mysqli_connect('localhost','root','password','kturesult');
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -12,28 +12,34 @@
  <script type="text/javascript">
  google.load("visualization", "1", {packages:["corechart"]});
  google.setOnLoadCallback(drawChart);
+
  function drawChart() {
 
  var data = google.visualization.arrayToDataTable([
  ['Subject', 'Grade'],
  <?php
- $query = "SELECT count(grade) AS count, id FROM result WHERE grade='A' GROUP BY id";
+ $regno=$_POST["regno"];
+ $query = "SELECT count(grade) AS count, semester FROM main WHERE grade='F'AND regno= '$regno' GROUP BY semester ";
 
  $exec = mysqli_query($con,$query);
+
  while($row = mysqli_fetch_array($exec)){
 
- echo "['".$row['id']."',".$row['count']."],";
+ echo "['".$row['semester']."',".$row['count']."],";
  }
  ?>
  ]);
 
  var options = {
- title: 'id wise'
+ title: 'Your supplementary details',
+ pieHole: 0.4,
+
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
  chart.draw(data, options);
+
+
  }
  </script>
 </head>

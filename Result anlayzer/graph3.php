@@ -14,6 +14,10 @@
  google.setOnLoadCallback(drawChart);
  google.setOnLoadCallback(drawChart2);
  google.setOnLoadCallback(drawChart3);
+ google.setOnLoadCallback(drawChart4);
+ google.setOnLoadCallback(drawChart5);
+ google.setOnLoadCallback(drawChart6);
+ google.setOnLoadCallback(drawChart7);
 
 
  function drawChart() {
@@ -84,7 +88,7 @@
  ]);
 
  var options = {
- title: 'Supplementary per branch'
+ title: 'Supplementary per branch(all sem combined)'
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
@@ -92,7 +96,109 @@
 
  }
 
- 
+
+ function drawChart4() {
+
+ var data = google.visualization.arrayToDataTable([
+ ['Subject', 'Grade'],
+ <?php
+ $query = "SELECT count(grade) AS count, deptname FROM main WHERE grade='F'AND semester='1' GROUP BY deptname";
+
+ $exec = mysqli_query($con,$query);
+
+ while($row = mysqli_fetch_array($exec)){
+
+ echo "['".$row['deptname']."',".$row['count']."],";
+ }
+ ?>
+ ]);
+
+ var options = {
+ title: 'Supplementary per branch on S1'
+ };
+
+ var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+ chart.draw(data, options);
+
+ }
+
+ function drawChart5() {
+
+ var data = google.visualization.arrayToDataTable([
+ ['Subject', 'Grade'],
+ <?php
+ $query = "SELECT count(grade) AS count, deptname FROM main WHERE grade='F'AND semester='2' GROUP BY deptname";
+
+ $exec = mysqli_query($con,$query);
+
+ while($row = mysqli_fetch_array($exec)){
+
+ echo "['".$row['deptname']."',".$row['count']."],";
+ }
+ ?>
+ ]);
+
+ var options = {
+ title: 'Supplementary per branch on S2'
+ };
+
+ var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+ chart.draw(data, options);
+
+ }
+
+ function drawChart6() {
+
+ var data = google.visualization.arrayToDataTable([
+ ['Subject', 'Grade'],
+ <?php
+ $query = "SELECT count(grade) AS count, deptname FROM main WHERE grade='F'AND semester='3' GROUP BY deptname";
+
+ $exec = mysqli_query($con,$query);
+
+ while($row = mysqli_fetch_array($exec)){
+
+ echo "['".$row['deptname']."',".$row['count']."],";
+ }
+ ?>
+ ]);
+
+ var options = {
+ title: 'Supplementary per branch on S3'
+ };
+
+ var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
+ chart.draw(data, options);
+
+ }
+
+ function drawChart7() {
+
+ var data = google.visualization.arrayToDataTable([
+ ['Subject', 'Grade'],
+ <?php
+ $query = "SELECT count(grade) AS count, deptname FROM main WHERE grade='F'AND semester='4' GROUP BY deptname";
+
+ $exec = mysqli_query($con,$query);
+
+ while($row = mysqli_fetch_array($exec)){
+
+ echo "['".$row['deptname']."',".$row['count']."],";
+ }
+ ?>
+ ]);
+
+ var options = {
+ title: 'Supplementary per branch on S4'
+ };
+
+ var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
+ chart.draw(data, options);
+
+ }
+
+
+
 
 
 
@@ -108,6 +214,10 @@
  <div id="piechart" style="width: 900px; height: 500px;"></div>
  <div id="piechart2" style="width: 900px; height: 500px;"></div>
  <div id="piechart3" style="width: 900px; height: 500px;"></div>
+ <div id="piechart4" style="width: 900px; height: 500px;"></div>
+ <div id="piechart5" style="width: 900px; height: 500px;"></div>
+ <div id="piechart6" style="width: 900px; height: 500px;"></div>
+ <div id="piechart7" style="width: 900px; height: 500px;"></div>
 
 </body>
 </html>
